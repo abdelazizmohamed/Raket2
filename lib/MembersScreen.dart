@@ -25,7 +25,7 @@ class _MyHomePageState extends State<MyMembers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.green[50],
+        backgroundColor: Color(0x99bceaf9),
         resizeToAvoidBottomInset: false,
         body: Column(textBaseline: TextBaseline.alphabetic, children: <Widget>[
           _myAppBar(context),
@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyMembers> {
   Widget _myAppBar(context) {
     return Center(
       child: Container(
-        color: Colors.green[50],
+        color:Color(0x99d6f0f9),
         height: 80,
         width: MediaQuery.of(context).size.width,
         child: Padding(
@@ -49,7 +49,7 @@ class _MyHomePageState extends State<MyMembers> {
                 child: Text(
                   'Members',
                   style: TextStyle(
-                      color: Colors.green,
+                      color: Color(0x99E2566E),
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0),
                 ),

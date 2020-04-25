@@ -65,7 +65,7 @@ class _MyHomePageState extends State<MyHomeTasks> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[50],
+      backgroundColor: Color(0x99bceaf9),
       resizeToAvoidBottomInset: false,
       body: Column(
         textBaseline: TextBaseline.alphabetic,
@@ -78,6 +78,7 @@ class _MyHomePageState extends State<MyHomeTasks> {
                 itemCount: items.length,
                 itemBuilder: (context, index) {
                   return Stack(children: <Widget>[
+
                     Column(children: <Widget>[
                       Padding(
                         padding: EdgeInsets.only(left: 25.0, right: 25.0),
@@ -136,7 +137,7 @@ class _MyHomePageState extends State<MyHomeTasks> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xff4caf50),
+        backgroundColor: Color(0x9935c1e3),
         child: Icon(
           FontAwesomeIcons.tasks,
           color: Colors.white,
@@ -160,7 +161,8 @@ class _MyHomePageState extends State<MyHomeTasks> {
     switch (icontype) {
       default:
         iconval = FontAwesomeIcons.tasks;
-        colorval = Color(0xff4caf50);
+//        Color(0xff4caf50)
+        colorval = Color(0x9935c1e3);
       //
     }
     return CircleAvatar(
@@ -172,7 +174,7 @@ class _MyHomePageState extends State<MyHomeTasks> {
   Widget _myAppBar(context) {
     return Center(
       child: Container(
-        color: Colors.green[50],
+        color: Color(0x99d6f0f9),
         height: 80,
         width: MediaQuery.of(context).size.width,
         child: Padding(
@@ -182,7 +184,7 @@ class _MyHomePageState extends State<MyHomeTasks> {
                 child: Text(
                   'Home',
                   style: TextStyle(
-                      color: Colors.green,
+                      color: Color(0x99E2566E),
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0),
                 ),

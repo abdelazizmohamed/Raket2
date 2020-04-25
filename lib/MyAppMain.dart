@@ -1,12 +1,11 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter123/HomeScreen.dart';
-import 'package:flutter123/MemberlocationScreen.dart';
+import 'package:flutter123/MapScreen.dart';
 import 'package:flutter123/MembersScreen.dart';
-import 'package:flutter123/SettingsScreen.dart';
+import 'package:flutter123/ProfilePage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-//void main() => runApp(MyAppMain());
 
 class MyAppMain extends StatelessWidget {
   @override
@@ -50,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
     MyHomeTasks(),
     MyMembers(), //member
     MyMap(),
-    MySettings(), //profile
+    ProfilePage(), //profile
   ];
 
   @override
@@ -69,27 +68,25 @@ class _MyHomePageState extends State<MyHomePage> {
             BottomNavyBarItem(
               icon: Icon(Icons.apps),
               title: Text('Home'),
-              activeColor: Colors.green,
+              activeColor: Color(0x99E2566E),
               textAlign: TextAlign.center,
             ),
             BottomNavyBarItem(
               icon: Icon(Icons.people_outline),
               title: Text('Members'),
-              activeColor: Colors.green,
+              activeColor: Color(0x99E2566E),
               textAlign: TextAlign.center,
             ),
             BottomNavyBarItem(
               icon: Icon(FontAwesomeIcons.mapMarkedAlt),
-              title: Text(
-                'Location',
-              ),
-              activeColor: Colors.green,
+              title: Text('Map'),
+              activeColor: Color(0x99E2566E),
               textAlign: TextAlign.center,
             ),
             BottomNavyBarItem(
-              icon: Icon(Icons.settings),
-              title: Text('Settings'),
-              activeColor: Colors.green,
+              icon: Icon(Icons.person),
+              title: Text('Profile'),
+              activeColor: Color(0x99E2566E),
               textAlign: TextAlign.center,
             ),
           ],

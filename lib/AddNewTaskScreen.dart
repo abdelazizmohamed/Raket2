@@ -5,6 +5,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'taskModel.dart';
 import 'firestoreservice.dart';
+import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'firestoreservice.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'AddNewTaskScreen.dart';
+import 'taskModel.dart';
 
 class TaskScreen extends StatefulWidget {
   final Task task;
@@ -39,8 +47,8 @@ class _TaskScreenState extends State<TaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.green[50],
-      resizeToAvoidBottomInset: false,
+      backgroundColor: Colors.lightBlue[50],
+//      resizeToAvoidBottomInset: false,
       body: Column(
         children: <Widget>[
           _myAppBar(),
@@ -53,7 +61,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   padding: EdgeInsets.only(
                       left: 30.0, right: 30.0, top: 16.0, bottom: 10.0),
                   child: TextField(
-                    style: TextStyle(fontSize: 22.0, color: Colors.green[400]),
+                    style: TextStyle(fontSize: 22.0, color: Colors.black45),
                     autocorrect: true,
                     controller: _taskNameController,
                     decoration: InputDecoration(
@@ -63,7 +71,7 @@ class _TaskScreenState extends State<TaskScreen> {
                       contentPadding: const EdgeInsets.only(
                           left: 14.0, bottom: 20.0, top: 20.0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green),
+                        borderSide: BorderSide(color: Colors.black45),
                         borderRadius: BorderRadius.circular(25.7),
                       ),
                       enabledBorder: UnderlineInputBorder(
@@ -77,7 +85,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   padding: EdgeInsets.only(
                       left: 30.0, right: 30.0, top: 16.0, bottom: 10.0),
                   child: TextField(
-                    style: TextStyle(fontSize: 22.0, color: Colors.green[400]),
+                    style: TextStyle(fontSize: 22.0, color: Colors.black45),
                     autocorrect: true,
                     controller: _taskDateController,
                     decoration: InputDecoration(
@@ -87,7 +95,7 @@ class _TaskScreenState extends State<TaskScreen> {
                       contentPadding: const EdgeInsets.only(
                           left: 14.0, bottom: 20.0, top: 20.0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green),
+                        borderSide: BorderSide(color: Colors.black45),
                         borderRadius: BorderRadius.circular(25.7),
                       ),
                       enabledBorder: UnderlineInputBorder(
@@ -101,7 +109,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   padding: EdgeInsets.only(
                       left: 30.0, right: 30.0, top: 16.0, bottom: 40.0),
                   child: TextField(
-                    style: TextStyle(fontSize: 22.0, color: Colors.green[400]),
+                    style: TextStyle(fontSize: 22.0, color: Colors.black45),
                     autocorrect: true,
                     controller: _taskTimeController,
                     decoration: InputDecoration(
@@ -111,7 +119,7 @@ class _TaskScreenState extends State<TaskScreen> {
                       contentPadding: const EdgeInsets.only(
                           left: 14.0, bottom: 20.0, top: 20.0),
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.green),
+                        borderSide: BorderSide(color: Colors.black45),
                         borderRadius: BorderRadius.circular(25.7),
                       ),
                       enabledBorder: UnderlineInputBorder(
@@ -127,8 +135,7 @@ class _TaskScreenState extends State<TaskScreen> {
                         left: 30.0, right: 30.0, top: 16.0, bottom: 90.0),
                     child: TextField(
                       maxLines: 15,
-                      style:
-                          TextStyle(fontSize: 22.0, color: Colors.green[400]),
+                      style: TextStyle(fontSize: 22.0, color: Colors.black45),
                       autocorrect: true,
                       controller: _taskDetailsController,
                       decoration: InputDecoration(
@@ -138,7 +145,7 @@ class _TaskScreenState extends State<TaskScreen> {
                         contentPadding: const EdgeInsets.only(
                             left: 14.0, bottom: 20.0, top: 20.0),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.green),
+                          borderSide: BorderSide(color: Colors.black45),
                           borderRadius: BorderRadius.circular(25.7),
                         ),
                         enabledBorder: UnderlineInputBorder(
@@ -153,7 +160,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     RaisedButton(
-                        color: Colors.green,
+                        color: Color(0x99E2566E),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
@@ -167,7 +174,7 @@ class _TaskScreenState extends State<TaskScreen> {
                         )),
                     // This button results in adding the contact to the database
                     RaisedButton(
-                        color: Color(0xff4caf50),
+                        color: Color(0x9935c1e3),
                         onPressed: () {
                           fireService
                               .createTODOTask(
@@ -201,7 +208,7 @@ class _TaskScreenState extends State<TaskScreen> {
   Widget _myAppBar() {
     return Center(
       child: Container(
-        color: Colors.green[50],
+        color: Colors.lightBlue[50],
         height: 100.0,
         width: MediaQuery.of(context).size.width,
         child: Padding(
@@ -211,7 +218,7 @@ class _TaskScreenState extends State<TaskScreen> {
                 child: Text(
                   'Add New Task',
                   style: TextStyle(
-                      color: Colors.green,
+                      color: Color(0x99E2566E),
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0),
                 ),
