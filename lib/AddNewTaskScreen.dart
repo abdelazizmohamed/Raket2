@@ -1,17 +1,7 @@
-import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'taskModel.dart';
+
 import 'firestoreservice.dart';
-import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'firestoreservice.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'AddNewTaskScreen.dart';
 import 'taskModel.dart';
 
 class TaskScreen extends StatefulWidget {
@@ -115,7 +105,7 @@ class _TaskScreenState extends State<TaskScreen> {
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
-                      hintText: 'Time',
+                      hintText: 'Location',
                       contentPadding: const EdgeInsets.only(
                           left: 14.0, bottom: 20.0, top: 20.0),
                       focusedBorder: OutlineInputBorder(
@@ -160,13 +150,13 @@ class _TaskScreenState extends State<TaskScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     RaisedButton(
-                        color: Color(0x99E2566E),
+                        color: Color(0xEEE2566E),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(27.0)),
-                        padding: EdgeInsets.fromLTRB(20, 13, 20, 13),
+                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                         splashColor: Colors.white,
                         child: const Text(
                           "Cancel",
@@ -174,7 +164,7 @@ class _TaskScreenState extends State<TaskScreen> {
                         )),
                     // This button results in adding the contact to the database
                     RaisedButton(
-                        color: Color(0x9935c1e3),
+                        color: Color.fromRGBO(52, 193, 228, 1.0),
                         onPressed: () {
                           fireService
                               .createTODOTask(
@@ -189,7 +179,7 @@ class _TaskScreenState extends State<TaskScreen> {
                         },
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(27.0)),
-                        padding: EdgeInsets.fromLTRB(20, 13, 20, 13),
+                        padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
                         splashColor: Colors.white,
                         child: const Text(
                           "Submit",
@@ -209,7 +199,7 @@ class _TaskScreenState extends State<TaskScreen> {
     return Center(
       child: Container(
         color: Colors.lightBlue[50],
-        height: 100.0,
+        height: 80.0,
         width: MediaQuery.of(context).size.width,
         child: Padding(
             padding: const EdgeInsets.only(top: 16.0),
@@ -218,7 +208,7 @@ class _TaskScreenState extends State<TaskScreen> {
                 child: Text(
                   'Add New Task',
                   style: TextStyle(
-                      color: Color(0x99E2566E),
+                      color: Color(0xEEE2566E),
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0),
                 ),

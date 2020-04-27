@@ -1,12 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter123/main.dart';
-import 'dart:async';
-import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'firestoreservice.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'AddNewTaskScreen.dart';
-import 'taskModel.dart';
 
 class MyMap extends StatefulWidget {
   MyMap({Key key, this.title}) : super(key: key);
@@ -49,7 +41,7 @@ class _MyHomePageState extends State<MyMap> {
                 child: Text(
                   'Map',
                   style: TextStyle(
-                      color: Color(0x99E2566E),
+                      color: Color(0xEEE2566E),
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0),
                 ),

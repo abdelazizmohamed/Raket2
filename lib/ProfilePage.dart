@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -34,7 +34,7 @@ class MapScreenState extends State<ProfilePage>
                 child: new Column(
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.only(left: 20.0, top: 20.0),
+                      padding: EdgeInsets.only(left: 20.0, top: 16.0),
                     ),
                     Padding(
                       padding: EdgeInsets.only(top: 20.0),
@@ -51,7 +51,7 @@ class MapScreenState extends State<ProfilePage>
                                   color: Colors.white70,
                                   image: new DecorationImage(
                                     image: new ExactAssetImage(
-                                        'assets/images/as.png'),
+                                        'assets/as.png'),
                                     fit: BoxFit.cover,
                                   ),
                                 )),
@@ -247,7 +247,6 @@ class MapScreenState extends State<ProfilePage>
                               ),
                             ],
                           )),
-
                       Padding(
                           padding: EdgeInsets.only(
                               left: 20.0, right: 20.0, top: 2.0),
@@ -282,8 +281,45 @@ class MapScreenState extends State<ProfilePage>
                                 ),
                               ),
                             ],
-                          )),
+                          )
+                      ),
                       !_status ? _getActionButtons() : new Container(),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(50.0),
+                          child: new Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+
+                            children: <Widget>[
+                              new Text(
+                                'Ongoing Task',
+                                style: TextStyle(
+                                    color: Color(0xEEE2566E),
+                                    fontSize: 22.0,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(50.0),
+                          child: new Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              new Text(
+                                'Completed Task',
+                                style: TextStyle(
+                                    color: Color(0xEEE2566E),
+                                    fontSize: 22.0,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -309,14 +345,15 @@ class MapScreenState extends State<ProfilePage>
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+
           Expanded(
             child: Padding(
               padding: EdgeInsets.only(right: 10.0),
               child: Container(
                   child: new RaisedButton(
-                child: new Text("Save"),
+                    child: new Text("Cancel"),
                 textColor: Colors.white,
-                color: Color(0x9935c1e3),
+                    color: Color(0xEEE2566E),
                 onPressed: () {
                   setState(() {
                     _status = true;
@@ -334,18 +371,18 @@ class MapScreenState extends State<ProfilePage>
               padding: EdgeInsets.only(left: 10.0),
               child: Container(
                   child: new RaisedButton(
-                child: new Text("Cancel"),
-                textColor: Colors.white,
-                    color: Color(0xEEE2566E),
-                onPressed: () {
-                  setState(() {
-                    _status = true;
-                    FocusScope.of(context).requestFocus(new FocusNode());
-                  });
-                },
-                shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(20.0)),
-              )),
+                    child: new Text("Save"),
+                    textColor: Colors.white,
+                    color: Color(0x9935c1e3),
+                    onPressed: () {
+                      setState(() {
+                        _status = true;
+                        FocusScope.of(context).requestFocus(new FocusNode());
+                      });
+                    },
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(20.0)),
+                  )),
             ),
             flex: 2,
           ),

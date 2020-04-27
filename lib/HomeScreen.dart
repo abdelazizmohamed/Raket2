@@ -1,10 +1,14 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:flutter/material.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'firestoreservice.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter123/TaskDetailsScreen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'AddNewTaskScreen.dart';
+import 'firestoreservice.dart';
 import 'taskModel.dart';
 
 class MyHomeTasks extends StatefulWidget {
@@ -15,35 +19,18 @@ class MyHomeTasks extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-//class ListItem<T> {
-//  bool isSelected = false; //Selection property to highlight or not
-//  T data; //Data of the user
-//  ListItem(this.data); //Constructor to assign the data
-//  void populateData() {
-//    list = [];
-//    for (int i = 0; i < 10; i++)
-//      list.add(ListItem<String>("item $i"));
-//  }
-//  Widget _getListItemTile(BuildContext context, int index) {
-//    return Container(
-//      margin: EdgeInsets.symmetric(vertical: 4),
-//      color: list[index].isSelected ? Colors.red[100] : Colors.white,
-//      child: ListTile(
-//        title: Text(list[index].data),
-//      ),
-//    );
-//  }
-//}
+delete(String id) {
+  FirestoreService fire = new FirestoreService();
+  fire.getTaskList().listen((QuerySnapshot snapshot) {
+    Firestore.instance.collection('todolist').document(id).delete();
+  });
+}
 
 class _MyHomePageState extends State<MyHomeTasks> {
   List<Task> items;
   FirestoreService fireService = new FirestoreService();
   StreamSubscription<QuerySnapshot> todoTasks;
-//
-//  void populateData() {
-//    list = [];
-//    for (int i = 0; i < 10; i++) list.add(ListItem<String>("item $i"));
-//  }
+  Firestore firestore = Firestore.instance;
 
   @override
   void initState() {
@@ -51,15 +38,24 @@ class _MyHomePageState extends State<MyHomeTasks> {
 
     items = new List();
     todoTasks?.cancel();
+
     todoTasks = fireService.getTaskList().listen((QuerySnapshot snapshot) {
-      final List<Task> tasks = snapshot.documents
+      List<Task> tasks = snapshot.documents
           .map((documentSnapshot) => Task.fromMap(documentSnapshot.data))
           .toList();
+
       setState(() {
-//        if (tasks == null) return true;
         return this.items = tasks;
       });
     });
+  }
+
+  onTapped(Task post) {
+    // navigate to the next screen.
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => TaskDetailsScreen(post)),
+    );
   }
 
   @override
@@ -77,61 +73,74 @@ class _MyHomePageState extends State<MyHomeTasks> {
             child: ListView.builder(
                 itemCount: items.length,
                 itemBuilder: (context, index) {
-                  return Stack(children: <Widget>[
-
-                    Column(children: <Widget>[
-                      Padding(
-                        padding: EdgeInsets.only(left: 25.0, right: 25.0),
-                        child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 120.0,
-                          child: Padding(
-                            padding: EdgeInsets.only(top: 12.0, bottom: 12.0),
-                            child: Material(
-                              color: Colors.white,
-                              child: Center(
-                                child: Padding(
-                                  padding: EdgeInsets.all(8.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: <Widget>[
-                                      todoType('${items[index].tasktype}'),
-                                      Text(
-                                        '${items[index].taskname}',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 20.0),
-                                      ),
-                                      Column(
+                  var post = items[index];
+                  return new ListTile(
+                    title: new Card(
+                      child: Stack(children: <Widget>[
+                        Column(children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.only(left: 25.0, right: 25.0),
+                            child: Container(
+                              width: MediaQuery
+                                  .of(context)
+                                  .size
+                                  .width,
+                              height: 120.0,
+                              child: Padding(
+                                padding:
+                                EdgeInsets.only(top: 12.0, bottom: 12.0),
+                                child: Material(
+                                  color: Colors.white,
+                                  child: Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        MainAxisAlignment.spaceBetween,
                                         children: <Widget>[
+                                          todoType('${items[index].tasktype}'),
                                           Text(
-                                            '${items[index].taskdate}',
+                                            '${items[index].taskname}',
                                             style: TextStyle(
+                                                letterSpacing: 0,
+                                                fontWeight: FontWeight.bold,
                                                 color: Colors.black,
-                                                fontSize: 18.0,
-                                                fontWeight: FontWeight.bold),
+                                                fontSize: 21.0),
                                           ),
-                                          Text(
-                                            '${items[index].tasktime}',
-                                            style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 16.0),
-                                          ),
+                                          Column(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Text(
+                                                '${items[index].taskdate}',
+                                                style: TextStyle(
+                                                    color: Colors.red,
+                                                    fontSize: 18.0,
+                                                    fontWeight:
+                                                    FontWeight.bold),
+                                              ),
+                                              Text(
+                                                '${items[index].tasktime}',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black,
+                                                    fontSize: 16.0),
+                                              ),
+                                            ],
+                                          )
                                         ],
-                                      )
-                                    ],
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      ),
-                    ]),
-                  ]);
+                        ]),
+                      ]),
+                    ),
+                    onTap: () => onTapped(post),
+                  );
                 }),
           ),
         ],
@@ -184,7 +193,7 @@ class _MyHomePageState extends State<MyHomeTasks> {
                 child: Text(
                   'Home',
                   style: TextStyle(
-                      color: Color(0x99E2566E),
+                      color: Color(0xEEE2566E),
                       fontWeight: FontWeight.bold,
                       fontSize: 30.0),
                 ),

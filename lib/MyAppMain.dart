@@ -13,7 +13,6 @@ class MyAppMain extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Home'),
     );
@@ -93,6 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: Container(
           child: _children[_currentIndex0],
-        ));
+        )
+    );
   }
 }
