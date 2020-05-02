@@ -4,6 +4,8 @@ import 'package:flutter123/HomeScreen.dart';
 import 'package:flutter123/MapScreen.dart';
 import 'package:flutter123/MembersScreen.dart';
 import 'package:flutter123/ProfilePage.dart';
+import 'package:flutter123/screens1/home/home.dart';
+import 'package:flutter123/services/auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 
@@ -29,6 +31,7 @@ class MyHomePage extends StatefulWidget {
 
 class PlaceholderWidget extends StatelessWidget {
   final Color color;
+  final AuthService _auth = AuthService();
 
   PlaceholderWidget(this.color);
 
@@ -46,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Widget> _children = [
     MyHomeTasks(),
-    MyMembers(), //member
+    Home(), //member
     MyMap(),
     ProfilePage(), //profile
   ];
@@ -54,6 +57,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomPadding: false,
+
         bottomNavigationBar: BottomNavyBar(
           selectedIndex: currentIndex,
           showElevation: true,

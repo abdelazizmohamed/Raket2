@@ -37,20 +37,30 @@ class _TaskScreenState extends State<TaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.lightBlue[50],
 //      resizeToAvoidBottomInset: false,
       body: Column(
         children: <Widget>[
           _myAppBar(),
           Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height - 100,
+
+            width: MediaQuery
+                .of(context)
+                .size
+                .width,
+            height: MediaQuery
+                .of(context)
+                .size
+                .height - 100,
             child: ListView(
               children: <Widget>[
                 Padding(
+
                   padding: EdgeInsets.only(
                       left: 30.0, right: 30.0, top: 16.0, bottom: 10.0),
                   child: TextField(
+
                     style: TextStyle(fontSize: 22.0, color: Colors.black45),
                     autocorrect: true,
                     controller: _taskNameController,
@@ -120,6 +130,8 @@ class _TaskScreenState extends State<TaskScreen> {
                   ),
                 ),
                 Container(
+//                  width: MediaQuery.of(context).size.width,
+//                  height: MediaQuery.of(context).size.height - 100,
                   child: Padding(
                     padding: EdgeInsets.only(
                         left: 30.0, right: 30.0, top: 16.0, bottom: 90.0),
@@ -168,11 +180,11 @@ class _TaskScreenState extends State<TaskScreen> {
                         onPressed: () {
                           fireService
                               .createTODOTask(
-                                  _taskNameController.text,
-                                  _taskDetailsController.text,
-                                  _taskDateController.text,
-                                  _taskTimeController.text,
-                                  _myTaskTyp.text)
+                              _taskNameController.text,
+                              _taskDetailsController.text,
+                              _taskDateController.text,
+                              _taskTimeController.text,
+                              _myTaskTyp.text)
                               .then((_) {
                             Navigator.pop(context);
                           });

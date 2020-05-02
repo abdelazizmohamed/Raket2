@@ -30,7 +30,8 @@ class _MyHomePageState extends State<MyHomeTasks> {
   List<Task> items;
   FirestoreService fireService = new FirestoreService();
   StreamSubscription<QuerySnapshot> todoTasks;
-  Firestore firestore = Firestore.instance;
+
+//  Firestore firestore = Firestore.instance;
 
   @override
   void initState() {
@@ -64,7 +65,7 @@ class _MyHomePageState extends State<MyHomeTasks> {
       backgroundColor: Color(0x99bceaf9),
       resizeToAvoidBottomInset: false,
       body: Column(
-        textBaseline: TextBaseline.alphabetic,
+//        textBaseline: TextBaseline.alphabetic,
         children: <Widget>[
           _myAppBar(context),
           Container(
@@ -79,57 +80,49 @@ class _MyHomePageState extends State<MyHomeTasks> {
                       child: Stack(children: <Widget>[
                         Column(children: <Widget>[
                           Padding(
-                            padding: EdgeInsets.only(left: 25.0, right: 25.0),
+                            padding: EdgeInsets.only(left: 15.0, right: 15.0),
                             child: Container(
-                              width: MediaQuery
-                                  .of(context)
-                                  .size
-                                  .width,
-                              height: 120.0,
-                              child: Padding(
-                                padding:
-                                EdgeInsets.only(top: 12.0, bottom: 12.0),
-                                child: Material(
-                                  color: Colors.white,
-                                  child: Center(
-                                    child: Padding(
-                                      padding: EdgeInsets.all(8.0),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                        children: <Widget>[
-                                          todoType('${items[index].tasktype}'),
-                                          Text(
-                                            '${items[index].taskname}',
-                                            style: TextStyle(
-                                                letterSpacing: 0,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black,
-                                                fontSize: 21.0),
-                                          ),
-                                          Column(
-                                            mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Text(
-                                                '${items[index].taskdate}',
-                                                style: TextStyle(
-                                                    color: Colors.red,
-                                                    fontSize: 18.0,
-                                                    fontWeight:
-                                                    FontWeight.bold),
-                                              ),
-                                              Text(
-                                                '${items[index].tasktime}',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Colors.black,
-                                                    fontSize: 16.0),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
+//                              width: MediaQuery.of(context).size.width,
+                              height: 80.0,
+                              child: Material(
+                                color: Colors.white,
+                                child: Center(
+                                  child: Padding(
+                                    padding: EdgeInsets.all(0.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: <Widget>[
+                                        todoType('${items[index].tasktype}'),
+                                        Text(
+                                          '${items[index].taskname}',
+                                          style: TextStyle(
+                                              letterSpacing: 0,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                              fontSize: 21.0),
+                                        ),
+                                        Column(
+                                          mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Text(
+                                              '${items[index].taskdate}',
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontSize: 18.0,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            Text(
+                                              '${items[index].tasktime}',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black,
+                                                  fontSize: 16.0),
+                                            ),
+                                          ],
+                                        )
+                                      ],
                                     ),
                                   ),
                                 ),

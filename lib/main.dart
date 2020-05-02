@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter123/MyAppMain.dart';
+import 'package:flutter123/firebase.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 
@@ -24,7 +25,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return new SplashScreen(
-      seconds: 0,
+      seconds: 5,
       navigateAfterSeconds: new AfterSplash(),
       image: new Image.asset('assets/Raket_round.png'),
       backgroundColor: Color.fromRGBO(52, 193, 228, 1.0),
@@ -42,8 +43,8 @@ class AfterSplash extends StatelessWidget {
     return MaterialApp(
       initialRoute: 'screen',
       routes: {
-//        'screen': (context) =>MyFireApp(),
-        'screen': (context) => MyAppMain(),
+        'screen': (context) => MyFireApp(),
+//        'screen': (context) => MyAppMain(),
       },
     );
   }

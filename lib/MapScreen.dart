@@ -30,6 +30,7 @@ class _MyHomePageState extends State<MyMap> {
 
   Widget _myAppBar(context) {
     return Center(
+
       child: Container(
         color: Color(0x99d6f0f9),
         height: 80,
